@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Navbar } from 'react-bootstrap';
 // import NavBar from "../layout"
-import MainNavbar from './NavBar';
+import MainNavbar from './NavBarLayout';
 
 export default function DefaultLayout({children}) {
 

@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { selectActiveUser, selectIsAuthenticated } from "../store/auth/selector";
 import { selectActiveUser, selectIsAuthenticated } from "../store/auth";
 import { logout } from "../store/auth/slice";
-// import Navbar from "react-bootstrap/Navbar";
+import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { Navbar } from "react-bootstrap";
 
 export default function MainNavbar(){
   const dispatch = useDispatch();
@@ -20,7 +18,7 @@ export default function MainNavbar(){
   }
 
 return (
-  <Navbar bg="dark" variant="dark">
+  <Navbar bg="white" color="dark">
     <Container>
         <Navbar.Brand>Galleries</Navbar.Brand>
         <Nav className="me-auto">
@@ -29,9 +27,11 @@ return (
         {isAuthenticated && (<Nav.Link  href="/my-galleries">My galleries</Nav.Link >)}
         {isAuthenticated && (<Nav.Link href="/create">Create new gallery</Nav.Link>)}
         {!isAuthenticated && (<Nav.Link href="/register">Register</Nav.Link>)}
-        {isAuthenticated && (<Button type="submit" onClick={handleLogout}>Logout</Button>)}
+        {isAuthenticated && (<Button variant="outline-danger" type="submit" onClick={handleLogout}>Logout</Button>)}
         </Nav>
     </Container>
     </Navbar>
     )
 }
+
+

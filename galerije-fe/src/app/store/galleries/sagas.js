@@ -4,18 +4,18 @@ import {getGalleries, getGallery, setGalleries, setGallery, createGallery, editG
     deleteGallery, setPaginatedGalleries, createComment, deleteComment,
     setGalleryWithNewComment, setGalleryWithoutComment, setGalleriesWithNewGallery} from "./slice"
 
-// function* handleGetGalleries(action) {
-//     try {
-//         const galleries = yield call(galleryService.getGalleries, action.payload?.page, action.payload?.term, action.payload?.userId);
-//         if (action.payload?.page > 1) {
-//             yield put(setPaginatedGalleries(galleries));
-//         } else {
-//             yield put(setGalleries(galleries));
-//         }
-//     } catch (error) {
-//         alert(error.message);
-//     }
-// }
+function* handleGetGalleries(action) {
+    try {
+        const galleries = yield call(galleryService.getGalleries, action.payload?.page, action.payload?.term, action.payload?.userId);
+        if (action.payload?.page > 1) {
+            yield put(setPaginatedGalleries(galleries));
+        } else {
+            yield put(setGalleries(galleries));
+        }
+    } catch (error) {
+        alert(error.message);
+    }
+}
 
 function* handleGetGallery(action) {
     try {
@@ -28,16 +28,17 @@ function* handleGetGallery(action) {
 
 function* handleCreateGallery(action) {
     try {
-        const newGallery = yield call(galleryService.addGallery, action.payload);
+        const newGallery = yield call(galleryService.createGallery, action.payload);
         yield put(setGalleriesWithNewGallery(newGallery));
     } catch (error) {
         alert("Title cant be less than characters 2 short and more than 255 characters long and images must be in jpg, jpeg or png format");
     }
+    console.log(action)
 }
 
 function* handleEditGallery(action) {
     try {
-        const gallery = yield call(galleryService.updateGallery, action.payload.newGallery.galleryId, action.payload.newGallery);
+        const gallery = yield call(galleryService.editGallery, action.payload.newGallery.galleryId, action.payload.newGallery);
         yield put(setGalleriesWithNewGallery(gallery));
     } catch (error) {
         alert("Title cant be less than characters 2 short and more than 255 characters long and images must be in jpg, jpeg or png format");
@@ -74,9 +75,9 @@ function* handleDeleteComment(action) {
     }
 }
 
-// export function* watchGetGalleries() {
-//     yield takeLatest(getGalleries.type, handleGetGalleries);
-// }
+export function* watchGetGalleries() {
+    yield takeLatest(getGalleries.type, handleGetGalleries);
+}
 
 export function* watchGetGallery() {
     yield takeLatest(getGallery.type, handleGetGallery);

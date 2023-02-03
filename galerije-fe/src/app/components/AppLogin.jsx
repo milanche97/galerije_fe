@@ -1,10 +1,14 @@
 import React from "react";
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
-export default function AppLogin({ handleOnLogin, credentials, setCredentials }) {
+export default function AppLogin({
+  handleOnLogin,
+  credentials,
+  setCredentials,
+}) {
   return (
     <div>
       <Form onSubmit={handleOnLogin}>
@@ -42,48 +46,42 @@ export default function AppLogin({ handleOnLogin, credentials, setCredentials })
         <br />
       <Form.Group as={Row} className="mb-3">
       <Col sm={{ span: 8, offset: 2 }}>
-      <Button type="submit">Login</Button>
+      <Button variant="outline-success" type="submit">Login</Button>
       </Col>
       </Form.Group>
       </Form>
     </div>
   );
-}
-// import React from "react";
-// import { Button, Form } from "react-bootstrap";
+  // return (
+  //   <form onSubmit={handleOnLogin}>
+  //     <div className="form-row">
+  //       <div className="form-group col-md-3">
+  //         <input
+  //           type="email"
+  //           className="form-control"
+  //           placeholder="Email"
+  //           required
+  //           value={credentials.email}
+  //           onChange={({ target }) =>
+  //             setCredentials({ ...credentials, email: target.value })
+  //           }
+  //         />
+  //       </div>
+  //       <div class="form-group col-md-3">
+  //         <input
+  //           type="password"
+  //           className="form-control"
+  //           placeholder="Password"
+  //           required
+  //           value={credentials.password}
+  //           onChange={({ target }) =>
+  //           setCredentials({ ...credentials, password: target.value })
+  //           }
+  //         />
+  //            <Button variant="outline-success" type="submit">Login</Button>
 
-// export const AppLogin = ({
-//   handleLogin,
-//   credentials,
-//   setCredentials,
-// }) => {
-//   return (
-//     <div>
-//       <h1>Login</h1>
-//       <Form onSubmit={handleLogin}>
-//         <label>Email:</label>
-//         <input
-//           required
-//           type="email"
-//           placeholder="email"
-//           value={credentials.email}
-//           onChange={({ target }) =>
-//             setCredentials({ ...credentials, email: target.value })
-//           }
-//         />
-//         <br />
-//         <label>Password:</label>
-//         <input
-//           required
-//           type="password"
-//           placeholder="Password"
-//           value={credentials.password}
-//           onChange={({ target }) =>
-//             setCredentials({ ...credentials, password: target.value })
-//           }
-//         />
-//         <Button type="submit">Login</Button>
-//       </Form>
-//     </div>
-//   );
-// }
+  //       </div>
+  //     </div>
+  //   </form>
+  // );
+}

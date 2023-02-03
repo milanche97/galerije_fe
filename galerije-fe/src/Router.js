@@ -16,7 +16,12 @@ import { getActiveUser } from "./app/store/auth";
 import { useEffect } from "react";
 import Gallery from "./app/pages/GalleryPage";
 import Galleries from "./app/pages/Galleries";
-import GalleriesPages from "./app/pages/Galleries";
+import RegisterPage from "./app/pages/RegisterPage"
+import LoginPage from "./app/pages/LoginPage"
+import MyGalleryPage, { SingleAuthor } from "./app/pages/SingleAuthor";
+import GalleryPage from "./app/pages/GalleryPage";
+import CreateGalleryPage from "./app/pages/CreateGalleryPage";
+
 
 
 export default function Router() {
@@ -49,33 +54,35 @@ export default function Router() {
         )
     }
 
+
     return <Switch>
-        <Route exact path='/'>
-            <Redirect to='/galleries'></Redirect>
-        </Route>
-        {/* <Route exact path="/galleries/:id">
-            <Gallery/>
-        </Route> */}
-        <Route path='/galleries' exact>
-            <GalleriesPages />
-        </Route>
-        <GuestRoute path='/login' exact>
-            <Login />
-        </GuestRoute>
-        <GuestRoute path='/register' exact>
-            <Register />
-        </GuestRoute>
-        <PrivateRoute exact path='/galleries/:id' >
-            <Gallery />
-        </PrivateRoute>
-        {/* <PrivateRoute path='/create' exact>
-            <CreateGalleryPage />
-        </PrivateRoute> */}
-        {/* <PrivateRoute exact path="/my-galleries">
-            <Galleries selfId={isAuthenticated ? (activeUser?.id) : null} />
-        </PrivateRoute> */}
-        {/* <PrivateRoute exact path ="/edit-gallery/:id">
-            <CreateGalleryPage/>
-        </PrivateRoute> */}
-    </Switch>
+    <Route exact path='/'>
+        <Redirect to='/galleries'></Redirect>
+    </Route>
+    <PrivateRoute exact path="/authors/:id">
+        <SingleAuthor/>
+    </PrivateRoute>
+    <Route path='/galleries' exact>
+        <Galleries />
+    </Route>
+    <GuestRoute path='/login' exact>
+        <LoginPage />
+    </GuestRoute>
+    <GuestRoute path='/register' exact>
+        <RegisterPage />
+    </GuestRoute>
+    <PrivateRoute exact path='/galleries/:id' >
+        <GalleryPage />
+    </PrivateRoute>
+    <PrivateRoute path='/create' exact>
+        <CreateGalleryPage />
+    </PrivateRoute>
+    <PrivateRoute exact path="/my-galleries">
+        <Galleries selfId={isAuthenticated ? (activeUser?.id) : null} />
+    </PrivateRoute>
+    <PrivateRoute exact path ="/edit-gallery/:id">
+        <CreateGalleryPage/>
+    </PrivateRoute>
+</Switch>
+
 }

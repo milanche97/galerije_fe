@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { selectGalleries } from "../store/galleries";
 import { useDispatch, useSelector } from "react-redux";
+import { selectGalleries } from "../store/galleries";
 import { getGalleries, setSearchUserId } from "../store/galleries/slice";
 import GalleryRow from "../components/GalleryRow";
 import Search from "../components/Search";
-import { setSearchTerm } from "../store/galleries/slice";
+import { selectSearchTerm } from "../store/galleries";
 import Button from 'react-bootstrap/Button';
 
-export default function GalleriesPages({selfId} = null) {
+export default function Galleries({selfId} = null) {
     const dispatch = useDispatch();
     const { id } = useParams();
     const galleries = useSelector(selectGalleries);
-    const term = useSelector(setSearchTerm);
+    const term = useSelector(selectSearchTerm);
 
     useEffect(() => {
         if(selfId){
@@ -42,8 +42,8 @@ export default function GalleriesPages({selfId} = null) {
     }
 
     return (
+        
         <div>
-            <h3> Galleries:</h3>
             <Search />
         
             {galleries?.data.length ? (
