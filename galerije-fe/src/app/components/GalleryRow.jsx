@@ -2,7 +2,7 @@ import useFormattedDate from "../hooks/UseFormatedDate";
 import  Card  from "react-bootstrap/Card";
 import  ListGroup  from 'react-bootstrap/ListGroup';
 
-export default function GalleryRow({ gallery }) {
+export default function GalleryComponent({ gallery }) {
 
   const formattedDate = useFormattedDate(gallery.created_at, "dd-MM-yyyy HH:mm");
 

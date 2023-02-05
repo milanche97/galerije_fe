@@ -18,10 +18,10 @@ import Gallery from "./app/pages/GalleryPage";
 import Galleries from "./app/pages/Galleries";
 import RegisterPage from "./app/pages/RegisterPage"
 import LoginPage from "./app/pages/LoginPage"
-import MyGalleryPage, { SingleAuthor } from "./app/pages/SingleAuthor";
+import  { SingleAuthor } from "./app/pages/SingleAuthor";
 import GalleryPage from "./app/pages/GalleryPage";
 import CreateGalleryPage from "./app/pages/CreateGalleryPage";
-
+import MyGalleryPage from "./app/pages/MyGalleryPage";
 
 
 export default function Router() {
@@ -78,7 +78,7 @@ export default function Router() {
         <CreateGalleryPage />
     </PrivateRoute>
     <PrivateRoute exact path="/my-galleries">
-        <Galleries selfId={isAuthenticated ? (activeUser?.id) : null} />
+        <MyGalleryPage selfId={isAuthenticated ? (activeUser?.id) : null} />
     </PrivateRoute>
     <PrivateRoute exact path ="/edit-gallery/:id">
         <CreateGalleryPage/>
